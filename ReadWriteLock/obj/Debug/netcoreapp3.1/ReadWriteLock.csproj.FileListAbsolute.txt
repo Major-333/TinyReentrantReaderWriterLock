@@ -1,0 +1,12 @@
+/Users/major333/work/dotnet/ReadWriteLock/ReadWriteLock/ReadWriteLock/bin/Debug/netcoreapp3.1/ReadWriteLock.deps.json
+/Users/major333/work/dotnet/ReadWriteLock/ReadWriteLock/ReadWriteLock/bin/Debug/netcoreapp3.1/ReadWriteLock.runtimeconfig.json
+/Users/major333/work/dotnet/ReadWriteLock/ReadWriteLock/ReadWriteLock/bin/Debug/netcoreapp3.1/ReadWriteLock.runtimeconfig.dev.json
+/Users/major333/work/dotnet/ReadWriteLock/ReadWriteLock/ReadWriteLock/bin/Debug/netcoreapp3.1/ReadWriteLock.dll
+/Users/major333/work/dotnet/ReadWriteLock/ReadWriteLock/ReadWriteLock/bin/Debug/netcoreapp3.1/ReadWriteLock.pdb
+/Users/major333/work/dotnet/ReadWriteLock/ReadWriteLock/ReadWriteLock/obj/Debug/netcoreapp3.1/ReadWriteLock.csprojAssemblyReference.cache
+/Users/major333/work/dotnet/ReadWriteLock/ReadWriteLock/ReadWriteLock/obj/Debug/netcoreapp3.1/ReadWriteLock.AssemblyInfoInputs.cache
+/Users/major333/work/dotnet/ReadWriteLock/ReadWriteLock/ReadWriteLock/obj/Debug/netcoreapp3.1/ReadWriteLock.AssemblyInfo.cs
+/Users/major333/work/dotnet/ReadWriteLock/ReadWriteLock/ReadWriteLock/obj/Debug/netcoreapp3.1/ReadWriteLock.csproj.CoreCompileInputs.cache
+/Users/major333/work/dotnet/ReadWriteLock/ReadWriteLock/ReadWriteLock/obj/Debug/netcoreapp3.1/ReadWriteLock.dll
+/Users/major333/work/dotnet/ReadWriteLock/ReadWriteLock/ReadWriteLock/obj/Debug/netcoreapp3.1/ReadWriteLock.pdb
+/Users/major333/work/dotnet/ReadWriteLock/ReadWriteLock/ReadWriteLock/obj/Debug/netcoreapp3.1/ReadWriteLock.genruntimeconfig.cache

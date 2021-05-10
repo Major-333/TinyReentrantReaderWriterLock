@@ -12,12 +12,15 @@ namespace ReadWriteLock
      *  和与只用 Monitor保护临界资源的方法作为 Baseline做性能对比
      *  
      *  测试条件与参数：
-     *  创建 1024个读写者线程，利用随机数产生器控制写者比例在 10%。并记录随机数，保证两次实验随机数相同。
+     *  读写者线程总数:1024个
+     *  假设读取时间:10ms，写入时间:100ms
+     *  写者比例:5%，利用随机数产生器控制读写者比例。并记录随机数，保证两次实验随机数相同。
      *  当 1024的读写者线程全部执行结束后输出读者和写者的平均等待时间
      *  
      *  测试结果：
-     *  写者平均等待时间：大约是 Baseline方法（只使用一个Monitor）的 5倍
-     *  读者平均等待时间：大约是 Baseline方法（只使用一个Monitor）的 1.6倍
+     *  写者平均等待时间：大约是 Baseline方法（只使用一个Monitor）的 71倍
+     *  读者平均等待时间：大约是 Baseline方法（只使用一个Monitor）的 30倍
+     *  写者比例越低时，与Baseline 相比优化效果越好。（由于更好的利用了并发读取）
      *  
      *  注意：由于为了保证写优先（解决 Second readers–writers problem）读写锁的读者并发性会受一定程度限制
      */
@@ -146,7 +149,7 @@ namespace ReadWriteLock
         private void printTestResult(Stopwatch stopwatch, String lockName)
         {
             Console.WriteLine(lockName + "所耗总时间{0}ms", stopwatch.ElapsedMilliseconds);
-            Console.WriteLine(lockName + "读者等待时间：{0}ms，"+ lockName + "写者等待时间{1}ms", readWaitTime, writeWaitTime);
+            Console.WriteLine(lockName + "读者等待时间：{0}ms，" + lockName + "写者等待时间{1}ms", readWaitTime, writeWaitTime);
             Console.WriteLine(lockName + "读者平均等待时间：{0}ms，" + lockName + "写者平均等待时间{1}ms", readWaitTime / readerThreadNum, writeWaitTime / writerThreadNum);
         }
 
@@ -168,7 +171,7 @@ namespace ReadWriteLock
             {
                 int rd = randNumList[i];
                 // rd范围是0-19,5%的线程为写者
-                if(rd == 0)
+                if (rd == 0)
                 {
                     writerThreadNum++;
                     new Thread(Writer).Start(this);
@@ -181,6 +184,7 @@ namespace ReadWriteLock
             }
             finished.WaitOne();
             stopwatch.Stop();
+            //输出测试结果
             printTestResult(stopwatch, "Ours");
 
             // 归零统计量
@@ -197,7 +201,7 @@ namespace ReadWriteLock
             for (int i = 0; i < totalThreadNum; i++)
             {
                 int rd = randNumList[i];
-                // rd范围是0-9,10%的线程为写者
+                // rd范围是0-19,5%的线程为写者
                 if (rd == 0)
                 {
                     writerThreadNum++;
@@ -211,6 +215,7 @@ namespace ReadWriteLock
             }
             finished.WaitOne();
             stopwatch.Stop();
+            //输出测试结果
             printTestResult(stopwatch, "Baseline");
         }
     }

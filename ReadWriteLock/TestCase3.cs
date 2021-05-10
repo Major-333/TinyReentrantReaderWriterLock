@@ -5,8 +5,8 @@ using System.Collections.Generic;
 
 namespace ReadWriteLock
 {
-    /*1
-     * 
+    /* 测试可重入读写锁
+     * 写锁可以重入写锁，读锁可以重入写锁，但是写锁不可以重入读锁。因为写操作应该对读操作可见。
      */
     class TestCase3
     {
@@ -16,7 +16,7 @@ namespace ReadWriteLock
             ReentrantReaderWriterLock rwLock = new ReentrantReaderWriterLock();
             ManualResetEvent mre = new ManualResetEvent(false);
             int threadCount = 2;
-
+            // 测试读锁重入写锁
             Task.Run(() =>
             {
                 rwLock.EnterWriteLock();
@@ -32,7 +32,7 @@ namespace ReadWriteLock
                     mre.Set();
                 }
             });
-
+            // 测试写锁重入写锁
             Task.Run(() =>
             {
                 rwLock.EnterWriteLock();
@@ -50,7 +50,7 @@ namespace ReadWriteLock
             });
 
             mre.WaitOne();
-
+            // 测试读锁重入读锁
             Task.Run(() =>
             {
                 rwLock.EnterReadLock();
